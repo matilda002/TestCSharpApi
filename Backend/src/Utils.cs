@@ -35,7 +35,7 @@ public static class Utils
         bool result;
         
         if (password.Length > 6 && password.Any(char.IsLower) && password.Any(char.IsUpper) &&
-            password.Any(char.IsNumber))
+            password.Any(char.IsNumber) && password.Any(char.IsSymbol) || password.Any(char.IsPunctuation))
         {
             result = true;
         }
