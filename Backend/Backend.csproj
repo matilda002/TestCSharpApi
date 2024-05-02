@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.3" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="Dyndata" Version="1.0.3" />
+    <PackageReference Include="Dyndata" Version="1.0.5" />
   </ItemGroup>
 
 </Project>
