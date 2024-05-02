@@ -29,4 +29,21 @@ public static class Utils
         }
         return successFullyWrittenUsers;
     }
+
+    public static bool IsPasswordGoodEnough(string password)
+    {
+        bool result;
+        
+        if (password.Length > 6 && password.Any(char.IsLower) && password.Any(char.IsUpper) &&
+            password.Any(char.IsNumber))
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+        return result;
+        
+    }
 }
