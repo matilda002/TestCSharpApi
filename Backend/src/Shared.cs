@@ -30,6 +30,7 @@ public static class Shared
         }
     }
     
+    // Searching in the correct filepath in the backend directory
     public static string FilePath(params string[] parts)
     {
         var c = Environment.CurrentDirectory;
