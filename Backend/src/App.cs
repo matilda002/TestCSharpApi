@@ -14,5 +14,4 @@ Globals = Obj(new
     sessionLifeTimeHours = 2
 });
 
-//Server.Start();
-new UtilsTest().TestIsPasswordGoodEnough();
+Server.Start();
