@@ -15,10 +15,4 @@ Globals = Obj(new
 });
 
 //Server.Start();
-new UtilsTest().TestCreateMockUsers();
-/*var addedUser = WebApp.Utils.CreateMockUsers();
-
-foreach (var user in addedUser)
-{
-    Log("added users", user);
-}*/
+new UtilsTest().TestIsPasswordGoodEnough();

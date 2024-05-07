@@ -29,4 +29,17 @@ public static class Shared
             return dto.ToUnixTimeMilliseconds();
         }
     }
+    
+    // Searching in the correct filepath in the backend directory
+    public static string FilePath(params string[] parts)
+    {
+        var c = Environment.CurrentDirectory;
+        var i = c.LastIndexOf("Backend");
+        var path = c.Substring(0, i + 7);
+        foreach (var part in parts)
+        {
+            path = Path.Combine(path, part);
+        }
+        return path;
+    }
 }
