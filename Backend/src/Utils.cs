@@ -17,28 +17,32 @@ public static class Utils
         }
         return result;
     }
-
+    
     public static Arr CreateMockUsers() 
     {
             // Read all mock users from the JSON file
-            var read = FilePath(FilePath("json", "mock-users.json"));
+            var read = File.ReadAllText(FilePath("json", "mock-users.json"));
             Arr mockUsers = JSON.Parse(read);
-            Arr successFullyWrittenUsers = Arr();
-            foreach (var user in mockUsers)
-            {
-                var result = SQLQueryOne(
-                    @"INSERT INTO users(firstName,lastName,email,password)
-                    VALUES($firstName, $lastName, $email, $password)
-                ", user);
-                // If we get an error from the DB then we haven't added
-                // the mock users, if not we have so add to the successful list
-                if (!result.HasKey("error"))
-                {
-                    // The specification says return the user list without password
-                    user.Delete("password");
-                    successFullyWrittenUsers.Push(user);
-                }
-            }
-            return successFullyWrittenUsers;
+            // Get all users from the database
+            Arr usersInDb = SQLQuery("SELECT email FROM users");
+            Arr emailsInDb = usersInDb.Map(user => user.email);
+            // Only keep the mock users not already in db
+            Arr mockUsersNotInDb = mockUsers.Filter(
+
+                mockUser => !emailsInDb.Contains(mockUser.email)
+
+            );
+            // Get the result of running the method in our code
+            var result = Utils.CreateMockUsers();
+            // Assert that the CreateMockUsers only return
+            // newly created users in the db
+            Console.WriteLine($"The test expected that {mockUsersNotInDb.Length} users should be added.");
+            Console.WriteLine($"And {result.Length} users were added.");
+            Console.WriteLine("The test also asserts that the users added " +
+                              "are equivalent (the same) to the expected users!");
+            Assert.Equivalent(mockUsersNotInDb, result);
+            Console.WriteLine("The test passed!");
+
+            return result;
     }
 }
