@@ -2,6 +2,7 @@
 
 public static class Utils
 {
+    
     public static bool IsPasswordGoodEnough(string password)
     {
         bool result;
