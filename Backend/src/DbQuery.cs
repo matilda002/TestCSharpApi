@@ -3,7 +3,7 @@ public static class DbQuery
 {
     // Setup the database connection
     private static SqliteConnection db =
-        new SqliteConnection("Data Source=_db.sqlite3");
+        new SqliteConnection("Data Source=" + FilePath("_db.sqlite3"));
 
     static DbQuery() { db.Open(); }
 
