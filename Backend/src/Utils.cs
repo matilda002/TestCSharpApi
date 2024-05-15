@@ -65,6 +65,25 @@ public static class Utils
         return successFullyWrittenUsers;
     }
 
-    // Now write the two last ones yourself!
-    // See: https://sys23m-jensen.lms.nodehill.se/uploads/videos/2021-05-18T15-38-54/sysa-23-presentation-2024-05-02-updated.html#8
+    // Ta bort alla mocksanvändare ur databasen.
+    // - En metod som tar bort alla mockanvändare som CreateMockUsers skapat ur
+    // databasen, men inga andra användare.
+    // - Den har inga inparametrar och ska returnera en Arr av Obj:s som innehåller
+    // de mock-users som faktiskt har tagits bort ur databasen EXKLUSIVE lösenord
+    // - Metoden har inga inparametrar
+    
+    // RemoveMockUsers
+
+    // Hur många användare har samma domän i sin email?
+    // En metod som summerar hur många användare som har samma domän i sin email.
+    // - Metoden ska läsa users-tabellen i databasen, via metoden SQLQuery - som är global i projektet).
+    // - Den ska returnera ett Obj (se Dyndatas dokumentation för Obj). I detta objekt ska varje domän
+    // vara en nyckel/egenskap och värdet tillhörande en nyckel ska vara hur många gånger just detta
+    // domän förekommer bland användarnas email.
+    // - Metoden har inga inparametrar och ska döpas till CountDomainsFromUserEmails.
+    
+    // CountDomainsFromUserEmails
+    
+    
+    
 }
