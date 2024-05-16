@@ -2,6 +2,7 @@
 import './stringExtras.js';
 import { $ } from './jQueryish.js';
 import { fetchEasy } from './fetchEasy.js';
+import { productLister } from './productLister.js';
 
 // Read and parse the content
 const content = await fetchEasy('/content/_content.md');
@@ -39,6 +40,7 @@ function showView() {
   $('main article').html(pages[index] || page404);
   // Add the css class 'active' to the active menu item
   $('nav a').removeClass('active').eq(index).addClass('active');
+  route === '/products' && productLister();
 }
 
 // Listen to the back/forward buttons - change view based on url

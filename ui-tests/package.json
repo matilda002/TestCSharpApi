@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "make-steps": "node _auto-generate-step-definitions.js",
+    "test-ui": "cypress open --browser chrome",
+    "test-ui-cli": "cypress run --browser chrome"
+  },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true
+    },
+    "stepDefinitions": [
+      "/specs/step_definitions/*.js"
+    ]
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "12.2",
+    "@cypress/webpack-preprocessor": "5.12",
+    "cypress": "10.7"
+  }
+}
