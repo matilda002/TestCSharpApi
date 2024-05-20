@@ -1,0 +1,131 @@
+{
+  "counter": 0,
+  "categories": [
+    {
+      "name": "Frogs",
+      "description": "Frogs in various sizes and colours from all around the world."
+    },
+    {
+      "name": "Toads",
+      "description": "Toads from different parts of the world."
+    },
+    {
+      "name": "Salamanders",
+      "description": "Salamanders for the water focused environments."
+    }
+  ],
+  "products": [
+    {
+      "name": "Amazon milk frog",
+      "description": "The amazon milk frog is a bigger species (around 10cm in length) with stripes and blue blood!!",
+      "price": 599,
+      "categoryId": "Frogs"
+    },
+    {
+      "name": "Common spadefoot toad",
+      "description": "The common spadefoot toad also known as the garlic toad is a type of frog, not toad.",
+      "price": 399,
+      "categoryId": "Frogs"
+    },
+    {
+      "name": "Axolotl",
+      "description": "The famous axolotl, a specie with the ability to regrow its body parts :o",
+      "price": 1500,
+      "categoryId": "Salamanders"
+    },
+    {
+      "name": "Poison dart frog",
+      "description": "Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters",
+      "price": 349,
+      "categoryId": "Frogs"
+    },
+    {
+      "name": "Australian green tree frog",
+      "description": "The australian green tree frog is the perfect beginner frog. Easy to take care of",
+      "price": 449,
+      "categoryId": "Frogs"
+    },
+    {
+      "name": "Chinese giant salamander",
+      "description": "The chinese giant salamander is one of the largest salamanders in the world reaching 1.8m in length!",
+      "price": 1999,
+      "categoryId": "Salamanders"
+    },
+    {
+      "name": "Common surinam toad",
+      "description": "This species of toad, the surinam toad lives exclusively in a aquatic environment. They also have an unique ability to become flat as a pancake!",
+      "price": 539,
+      "categoryId": "Toads"
+    },
+    {
+      "name": "Smooth-sided toad",
+      "description": "A smooth-sided toad is a beautiful brown toad with a dark brown stripe on their side.",
+      "price": 269,
+      "categoryId": "Toads"
+    },
+    {
+      "name": "Olm",
+      "description": "The olm is a salamander that lives in the european caves. Their environment has given them a unique slender appearance.",
+      "price": 699,
+      "categoryId": "Salamanders"
+    },
+    {
+      "name": "Fire balled toad",
+      "description": "The fire balled toad has a colorful pattern unlike most toad species.",
+      "price": 469,
+      "categoryId": "Toads"
+    }
+  ],
+  "comments": [
+    {
+      "comment": "Unique looking salamander with it's long face. It's like a salamander, but slender.",
+      "userId": 3,
+      "productId": "Olm"
+    },
+    {
+      "comment": "I accidentally fed the frogs poisons critters...",
+      "userId": 3,
+      "productId": "Poison dart frog"
+    },
+    {
+      "comment": "I don't think I'll make it. I touched the frog and ingested the poison.",
+      "userId": 3,
+      "productId": "Poison dart frog"
+    },
+    {
+      "comment": "It lives up to its' garlic title. Somehow I was threatening and now the whole room smells like garlic.",
+      "userId": 3,
+      "productId": "Common spadefoot toad"
+    },
+    {
+      "comment": "IT HAS NO LEGS, NO ARMS WHAT AM I GOING TO DO!!",
+      "userId": 3,
+      "productId": "Axolotl"
+    },
+    {
+      "comment": "Oh wait. They grew back :D",
+      "userId": 3,
+      "productId": "Axolotl"
+    },
+    {
+      "comment": "Why does it look like that. The face is literally .____.",
+      "userId": 3,
+      "productId": "Chinese giant salamander"
+    },
+    {
+      "comment": "It is the flattest toad I've ever seen, looks like a leaf.",
+      "userId": 3,
+      "productId": "Common surinam toad"
+    },
+    {
+      "comment": "The amazon milk frog confused my finger as food, I could feel everything.",
+      "userId": 3,
+      "productId": "Amazon milk frog"
+    },
+    {
+      "comment": "One of the sweetest frogs, they love to just hang around <3",
+      "userId": 3,
+      "productId": "Australian green tree frog"
+    }
+  ]
+}

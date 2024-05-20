@@ -1,7 +1,4 @@
 // Global settings
-
-using Utils = Microsoft.VisualBasic.CompilerServices.Utils;
-
 Globals = Obj(new
 {
     debugOn = true,
@@ -9,10 +6,9 @@ Globals = Obj(new
     aclOn = true,
     isSpa = true,
     port = 3001,
-    serverName = "Ironboy's Minimal API Server",
-    frontendPath = Path.Combine("..", "Frontend"),
+    serverName = "Matilda's Minimal API Server",
+    frontendPath = FilePath("..", "Frontend"),
     sessionLifeTimeHours = 2
 });
 
-//Server.Start();
-new UtilsTest().TestIsPasswordGoodEnough();
+Server.Start();

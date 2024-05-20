@@ -1,0 +1,41 @@
+﻿name: .NET Core Desktop
+
+on:
+  push:
+    branches: [ "feature-unit-testing" ]
+  pull_request:
+    branches: [ "feature-unit-testing" ]
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug]
+
+    runs-on: windows-latest
+    
+    env:
+      Solution_Name: Backend.sln
+      Test_Project_Path: Backend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      # Install the .NET Core workload
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      
+      # Copy database from DbTemplate to Backend
+      - name: Copy database to project
+        run: copy DbTemplate\\_db.sqlite3 Backend
+      
+      # Execute all unit tests in the solution
+      - name: Execute unit tests
+        run: dotnet test --logger "console;verbosity=detailed"
