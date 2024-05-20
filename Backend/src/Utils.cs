@@ -2,47 +2,88 @@
 
 public static class Utils
 {
+    // Read all mock users from file
+    private static readonly Arr mockUsers = JSON.Parse(
+        File.ReadAllText(FilePath("json", "mock-users.json"))
+    );
+
+    // Read all bad words from file and sort from longest to shortest
+    // if we didn't sort we would often get "---ing" instead of "---" etc.
+    // (Comment out the sort - run the unit tests and see for yourself...)
+    private static readonly Arr badWords = ((Arr)JSON.Parse(
+        File.ReadAllText(FilePath("json", "bad-words.json"))
+    )).Sort((a, b) => ((string)b).Length - ((string)a).Length);
+
     public static bool IsPasswordGoodEnough(string password)
     {
-        bool result;
-        
-        if (password.Length > 6 && password.Any(char.IsLower) && password.Any(char.IsUpper) &&
-            password.Any(char.IsNumber) && password.Any(char.IsSymbol) || password.Any(char.IsPunctuation))
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-        return result;
+        return password.Length >= 8
+            && password.Any(Char.IsDigit)
+            && password.Any(Char.IsLower)
+            && password.Any(Char.IsUpper)
+            && password.Any(x => !Char.IsLetterOrDigit(x));
     }
-    
-    public static Arr CreateMockUsers() 
+
+    public static bool IsPasswordGoodEnoughRegexVersion(string password)
     {
-            // Read all mock users from the JSON file
-            var read = File.ReadAllText(FilePath("json", "mock-users.json"));
-            Arr mockUsers = JSON.Parse(read);
-            // Get all users from the database
-            Arr usersInDb = SQLQuery("SELECT email FROM users");
-            Arr emailsInDb = usersInDb.Map(user => user.email);
-            // Only keep the mock users not already in db
-            Arr mockUsersNotInDb = mockUsers.Filter(
-
-                mockUser => !emailsInDb.Contains(mockUser.email)
-
-            );
-            // Get the result of running the method in our code
-            var result = Utils.CreateMockUsers();
-            // Assert that the CreateMockUsers only return
-            // newly created users in the db
-            Console.WriteLine($"The test expected that {mockUsersNotInDb.Length} users should be added.");
-            Console.WriteLine($"And {result.Length} users were added.");
-            Console.WriteLine("The test also asserts that the users added " +
-                              "are equivalent (the same) to the expected users!");
-            Assert.Equivalent(mockUsersNotInDb, result);
-            Console.WriteLine("The test passed!");
-
-            return result;
+        // See: https://dev.to/rasaf_ibrahim/write-regex-password-validation-like-a-pro-5175
+        var pattern = @"^(?=.*[0-9])(?=.*[a-zåäö])(?=.*[A-ZÅÄÖ])(?=.*\W).{8,}$";
+        return Regex.IsMatch(password, pattern);
     }
+
+    public static string RemoveBadWords(string comment, string replaceWith = "---")
+    {
+        comment = " " + comment;
+        replaceWith = " " + replaceWith + "$1";
+        badWords.ForEach(bad =>
+        {
+            var pattern = @$" {bad}([\,\.\!\?\:\; ])";
+            comment = Regex.Replace(
+                comment, pattern, replaceWith, RegexOptions.IgnoreCase);
+        });
+        return comment[1..];
+    }
+
+    public static Arr CreateMockUsers()
+    {
+        Arr successFullyWrittenUsers = Arr();
+        foreach (var user in mockUsers)
+        {
+            // user.password = "12345678";
+            var result = SQLQueryOne(
+                @"INSERT INTO users(firstName,lastName,email,password)
+                VALUES($firstName, $lastName, $email, $password)
+            ", user);
+            // If we get an error from the DB then we haven't added
+            // the mock users, if not we have so add to the successful list
+            if (!result.HasKey("error"))
+            {
+                // The specification says return the user list without password
+                user.Delete("password");
+                successFullyWrittenUsers.Push(user);
+            }
+        }
+        return successFullyWrittenUsers;
+    }
+
+    // Ta bort alla mocksanvändare ur databasen.
+    // - En metod som tar bort alla mockanvändare som CreateMockUsers skapat ur
+    // databasen, men inga andra användare.
+    // - Den har inga inparametrar och ska returnera en Arr av Obj:s som innehåller
+    // de mock-users som faktiskt har tagits bort ur databasen EXKLUSIVE lösenord
+    // - Metoden har inga inparametrar
+    
+    // RemoveMockUsers
+
+    // Hur många användare har samma domän i sin email?
+    // En metod som summerar hur många användare som har samma domän i sin email.
+    // - Metoden ska läsa users-tabellen i databasen, via metoden SQLQuery - som är global i projektet).
+    // - Den ska returnera ett Obj (se Dyndatas dokumentation för Obj). I detta objekt ska varje domän
+    // vara en nyckel/egenskap och värdet tillhörande en nyckel ska vara hur många gånger just detta
+    // domän förekommer bland användarnas email.
+    // - Metoden har inga inparametrar och ska döpas till CountDomainsFromUserEmails.
+    
+    // CountDomainsFromUserEmails
+    
+    
+    
 }

@@ -1,4 +1,5 @@
 // Global settings
+
 Globals = Obj(new
 {
     debugOn = true,
