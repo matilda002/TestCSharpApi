@@ -43,7 +43,7 @@
     },
     {
       "name": "Poison dart frog",
-      "description": "Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters",
+      "description": "Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters.",
       "price": 349,
       "categoryId": "Frogs"
     },
