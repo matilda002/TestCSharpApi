@@ -1,2 +1,2 @@
 # Products
-Our products are from Sweden, with proper Swedish names and descriptions. 😊 
+Our products are from all over the world from the best breeders out there. 😊 
