@@ -74,7 +74,7 @@ public class UtilsTest(Xlog Console)
         Assert.Equivalent(mockUsersNotInDb, result);
         Console.WriteLine("The test passed!");
     }
-    
+    /*
     [Fact]
     public void TestRemoveMockUsers()
     {
@@ -91,7 +91,7 @@ public class UtilsTest(Xlog Console)
         Assert.Equivalent(mockUsersInDb, result);
         Console.WriteLine("All the mockusers deleted: " + JSON.Stringify(result));
     }
-    
+    */
     [Fact]
     public void TestCountDomainsFromUserEmails()
     {

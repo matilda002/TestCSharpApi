@@ -64,7 +64,7 @@ public static class Utils
         }
         return successFullyWrittenUsers;
     }
-    
+    /*
     public static Arr RemoveMockUsers()
     {
         // array for removed mockusers later on
@@ -92,7 +92,7 @@ public static class Utils
             }
         }
         return successfullyRemovedMockUsers;
-    }
+    }*/
     
     public static Obj CountDomainsFromUserEmails()
     {
