@@ -73,7 +73,23 @@ public class UtilsTest(Xlog Console)
         Console.WriteLine("The test passed!");
     }
 
-    // TestRemoveMockUsers
+    [Fact]
+    public void TestRemoveMockUsers()
+    {
+        Arr usersInDb = SQLQuery("select email from users");
+        Arr emailsInDb = usersInDb.Map(user => user.email);
+        Arr mockUsersInDb = mockUsers.Filter(
+            mockUser => emailsInDb.Contains(mockUser.email)
+        );
+        
+        Arr result = Utils.RemoveMockUsers();
+        // seeing if it removed the correct users in db
+        Assert.Equivalent(mockUsersInDb, result);
+        // print out all mockusers deleted without password
+        Console.WriteLine($"Expected amount of mock users deleted: {mockUsersInDb.Length}");
+        Console.WriteLine($"Actual amount of mock users deleted: {result.Length}");
+        Console.WriteLine("All the mockusers deleted: " + JSON.Stringify(result));
+    }
     
     // TestCountDomainsFromUserEmails
 }

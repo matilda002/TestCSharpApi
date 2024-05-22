@@ -65,14 +65,36 @@ public static class Utils
         return successFullyWrittenUsers;
     }
 
-    // Ta bort alla mocksanvändare ur databasen.
-    // - En metod som tar bort alla mockanvändare som CreateMockUsers skapat ur
-    // databasen, men inga andra användare.
-    // - Den har inga inparametrar och ska returnera en Arr av Obj:s som innehåller
-    // de mock-users som faktiskt har tagits bort ur databasen EXKLUSIVE lösenord
-    // - Metoden har inga inparametrar
+    public static Arr RemoveMockUsers()
+    {
+        // array for removed mockusers later on
+        Arr successfullyRemovedMockUsers = Arr();
+        
+        Arr usersInDb = SQLQuery("select email from users");
+        // find a matching email from the mock-users.json and emails in db
+        // email is our unique key in the db
+        Arr emailsInDb = usersInDb.Map(user => user.email);
+        Arr mockUsersInDb = mockUsers.Filter(
+            mockUser => emailsInDb.Contains(mockUser.email)
+        );
+        
+        foreach (var user in mockUsersInDb)
+        {
+            // remove all mockusers with the matching unique key
+            var removeMockUser = SQLQueryOne(
+                @"delete from users where email = $email", user);
+            
+            // if no error occurs, return removed users without password
+            if (!removeMockUser.HasKey("error"))
+            {
+                user.Delete("password");
+                successfullyRemovedMockUsers.Push(user);
+            }
+        }
+        return successfullyRemovedMockUsers;
+    }
     
-    // RemoveMockUsers
+    
 
     // Hur många användare har samma domän i sin email?
     // En metod som summerar hur många användare som har samma domän i sin email.
@@ -83,7 +105,6 @@ public static class Utils
     // - Metoden har inga inparametrar och ska döpas till CountDomainsFromUserEmails.
     
     // CountDomainsFromUserEmails
-    
     
     
 }
