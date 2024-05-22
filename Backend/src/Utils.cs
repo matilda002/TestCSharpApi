@@ -64,16 +64,16 @@ public static class Utils
         }
         return successFullyWrittenUsers;
     }
-
+    
     public static Arr RemoveMockUsers()
     {
         // array for removed mockusers later on
         Arr successfullyRemovedMockUsers = Arr();
         
-        Arr usersInDb = SQLQuery("select email from users");
+        Arr qUsersInDb = SQLQuery("select email from users");
         // find a matching email from the mock-users.json and emails in db
         // email is our unique key in the db
-        Arr emailsInDb = usersInDb.Map(user => user.email);
+        Arr emailsInDb = qUsersInDb.Map(user => user.email);
         Arr mockUsersInDb = mockUsers.Filter(
             mockUser => emailsInDb.Contains(mockUser.email)
         );
@@ -81,11 +81,11 @@ public static class Utils
         foreach (var user in mockUsersInDb)
         {
             // remove all mockusers with the matching unique key
-            var removeMockUser = SQLQueryOne(
+            var qRemoveMockUser = SQLQueryOne(
                 @"delete from users where email = $email", user);
             
             // if no error occurs, return removed users without password
-            if (!removeMockUser.HasKey("error"))
+            if (!qRemoveMockUser.HasKey("error"))
             {
                 user.Delete("password");
                 successfullyRemovedMockUsers.Push(user);
@@ -94,17 +94,21 @@ public static class Utils
         return successfullyRemovedMockUsers;
     }
     
-    
+    public static Obj CountDomainsFromUserEmails()
+    {
+        // select email domains by checking after the @ and counts
+        // the amount of domains by the user id, then groups them 
+        // in a tableview by the domain
+        Arr qEmailDomains = SQLQuery(@"select substring(email, instr(email, '@') + 1, 
+                                length(email)) as domain, count(id) as count 
+                                from users group by domain");
+        Obj countedDomains = Obj();
 
-    // Hur många användare har samma domän i sin email?
-    // En metod som summerar hur många användare som har samma domän i sin email.
-    // - Metoden ska läsa users-tabellen i databasen, via metoden SQLQuery - som är global i projektet).
-    // - Den ska returnera ett Obj (se Dyndatas dokumentation för Obj). I detta objekt ska varje domän
-    // vara en nyckel/egenskap och värdet tillhörande en nyckel ska vara hur många gånger just detta
-    // domän förekommer bland användarnas email.
-    // - Metoden har inga inparametrar och ska döpas till CountDomainsFromUserEmails.
-    
-    // CountDomainsFromUserEmails
-    
-    
+        // adds up all the counted domains and returns as Obj
+        foreach (var domain in qEmailDomains)
+        {
+            countedDomains[domain.domain] = domain.count;
+        }
+        return countedDomains;
+    }
 }

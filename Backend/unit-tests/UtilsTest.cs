@@ -7,6 +7,9 @@ public class UtilsTest(Xlog Console)
         File.ReadAllText(FilePath("json", "mock-users.json"))
     );
 
+    // read all users with their unique email address
+    private readonly Arr _qUsersInDb = SQLQuery("select email from users");
+
     [Theory]
     [InlineData("abC9#fgh", true)]  // ok
     [InlineData("stU5/xyz", true)]  // ok too
@@ -55,8 +58,7 @@ public class UtilsTest(Xlog Console)
     public void TestCreateMockUsers()
     {
         // Get all users from the database
-        Arr usersInDb = SQLQuery("SELECT email FROM users");
-        Arr emailsInDb = usersInDb.Map(user => user.email);
+        Arr emailsInDb = _qUsersInDb.Map(user => user.email);
         // Only keep the mock users not already in db
         Arr mockUsersNotInDb = mockUsers.Filter(
             mockUser => !emailsInDb.Contains(mockUser.email)
@@ -72,24 +74,48 @@ public class UtilsTest(Xlog Console)
         Assert.Equivalent(mockUsersNotInDb, result);
         Console.WriteLine("The test passed!");
     }
-
+    
     [Fact]
     public void TestRemoveMockUsers()
     {
-        Arr usersInDb = SQLQuery("select email from users");
-        Arr emailsInDb = usersInDb.Map(user => user.email);
+        Arr emailsInDb = _qUsersInDb.Map(user => user.email);
         Arr mockUsersInDb = mockUsers.Filter(
             mockUser => emailsInDb.Contains(mockUser.email)
         );
         
         Arr result = Utils.RemoveMockUsers();
-        // seeing if it removed the correct users in db
-        Assert.Equivalent(mockUsersInDb, result);
         // print out all mockusers deleted without password
         Console.WriteLine($"Expected amount of mock users deleted: {mockUsersInDb.Length}");
         Console.WriteLine($"Actual amount of mock users deleted: {result.Length}");
+        // seeing if it removed the correct users in db
+        Assert.Equivalent(mockUsersInDb, result);
         Console.WriteLine("All the mockusers deleted: " + JSON.Stringify(result));
     }
     
-    // TestCountDomainsFromUserEmails
+    [Fact]
+    public void TestCountDomainsFromUserEmails()
+    {
+        Obj domainCount = Obj();
+
+        foreach (var user in _qUsersInDb)
+        {
+            // checking the domain names
+            string domain = user.email.Split('@')[1];
+            if (!domainCount.HasKey(domain))
+            {
+                domainCount[domain] = 1;
+            }
+            else
+            {
+                domainCount[domain]++;
+            }
+        }
+        // checking that the expected matches the actual outcome
+        Obj result = Utils.CountDomainsFromUserEmails();
+        Console.WriteLine($"Expected domain count: {domainCount.GetEntries().Length}");
+        Console.WriteLine($"Actual domain count: {result.GetEntries().Length}");
+        Console.WriteLine($"Result list of domains and their user count:\n{result}");
+        Assert.Equivalent(domainCount, result);
+        Console.WriteLine("Test passed, all domains counted for!!");
+    }
 }
