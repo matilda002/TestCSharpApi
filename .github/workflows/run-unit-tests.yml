@@ -2,9 +2,9 @@
 
 on:
   push:
-    branches: [ "feature-unit-testing" ]
+    branches: [ "#feature-unit-testing" ]
   pull_request:
-    branches: [ "feature-unit-testing" ]
+    branches: [ "#feature-unit-testing" ]
 
 jobs:
 
