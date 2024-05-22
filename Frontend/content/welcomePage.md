@@ -1,5 +1,5 @@
 # Welcome
-![A beautiful sunset by the ocean.](/images/sunset.jpg "A beautiful sunset by the ocean.")
+![Three axolotls chilling under a piece of wood.](/images/axolotls.jpg "Three axolotls chilling under a piece of wood.")
 
 Ut ac mattis velit. Morbi iaculis ligula quam, sit amet faucibus libero pharetra eget. Sed blandit neque sit amet lorem fermentum, et blandit arcu sagittis. Vivamus felis velit, eleifend id condimentum vitae, venenatis commodo neque. Donec tortor massa, semper at odio quis, imperdiet pretium dui. Fusce lobortis condimentum tortor, eu aliquam ex porta ut. Quisque condimentum odio leo, volutpat congue arcu egestas ut.
 

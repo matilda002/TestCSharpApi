@@ -39,3 +39,21 @@ jobs:
       # Execute all unit tests in the solution
       - name: Execute unit tests
         run: dotnet test --logger "console;verbosity=detailed"
+      
+      # Start backend non-blocking
+      - name: Start the backend
+        shell: bash
+        run: cd Backend && nohup dotnet run &
+      
+      # Run the endpoint tests
+      # (note: The reason we don't have to install Newman
+      #  is that it is already installed in the 
+      #  GitHub Actions Windows Server runner image)
+      - name: Run the endpoint tests
+        shell: bash
+        run: cd endpoint-tests && npm test
+      
+      # Run the UI tests
+      - name: Run the UI tests
+        shell: bash
+        run: cd ui-tests && npm install && npm run test-ui-cli

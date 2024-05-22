@@ -2,6 +2,7 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 export async function fetchEasy(url, options = {}) {
   let isText = !url.endsWith('.json') || !url.includes('.');
+  if (url.includes('/api')) { isText = false; }
   let result = await (await fetch(url, options))[isText ? 'text' : 'json']();
   url.endsWith('.md') && (result = marked(result));
   isText && (result = await result.hydrate({

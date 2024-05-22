@@ -144,6 +144,35 @@ main img[src*="right"] {
   margin: 0 0 20px 25px;
 }
 
+select {
+  padding: 2px 5px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: "Poppins";
+  margin-bottom: 20px;
+}
+
+.product {
+  border-top: 1px solid #999;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 200px;
+  background-position-y: 20px;
+}
+
+.price {
+  font-weight: bold;
+  text-align: right;
+}
+
+.product>div {
+  width: 45%;
+  display: inline-block;
+}
+
+
+
 /* For a fixed header */
 /*header {
   position: fixed;

@@ -12,6 +12,14 @@
     {
       "name": "Salamanders",
       "description": "Salamanders for the water focused environments."
+    },
+    {
+      "name": "Turtles",
+      "description": "Turtles for the long commitment."
+    },
+    {
+      "name": "Worm lizards",
+      "description": "Lizards without legs."
     }
   ],
   "products": [
@@ -35,13 +43,13 @@
     },
     {
       "name": "Poison dart frog",
-      "description": "Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters",
+      "description": "Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters.",
       "price": 349,
       "categoryId": "Frogs"
     },
     {
       "name": "Australian green tree frog",
-      "description": "The australian green tree frog is the perfect beginner frog. Easy to take care of",
+      "description": "The australian green tree frog is the perfect beginner frog. Easy to take care of.",
       "price": 449,
       "categoryId": "Frogs"
     },
@@ -70,10 +78,46 @@
       "categoryId": "Salamanders"
     },
     {
-      "name": "Fire balled toad",
-      "description": "The fire balled toad has a colorful pattern unlike most toad species.",
+      "name": "Fire bellied toad",
+      "description": "The fire bellied toad has a colorful pattern unlike most toad species.",
       "price": 469,
       "categoryId": "Toads"
+    },
+    {
+      "name": "Suwannee cooter",
+      "description": "Suwanne cooter is native to Florida and has striking yellow stripes.",
+      "price": 300,
+      "categoryId": "Turtles"
+    },
+    {
+      "name": "Indian flapshell turtle",
+      "description": "The Indian flapshell turtle has nostrils with a similar appearance to a pig.",
+      "price": 400,
+      "categoryId": "Turtles"
+    },
+    {
+      "name": "South American snapping turtle",
+      "description": "Like their name, snapping turtles has fast reflexes and powerful beak.",
+      "price": 850,
+      "categoryId": "Turtles"
+    },
+    {
+      "name": "Zarudny's worm lizard",
+      "description": "A worm lizard from the Arabian peninsula with a love for sandy enviroments.",
+      "price": 399,
+      "categoryId": "Worm lizards"
+    },
+    {
+      "name": "Red worm lizard",
+      "description": "One of the bigger specie of worm lizards reaching lengths of 80 cm.",
+      "price": 169,
+      "categoryId": "Worm lizards"
+    },
+    {
+      "name": "Bipes",
+      "description": "Bipes or Mexican worm lizard has small forearms with five toes.",
+      "price": 60,
+      "categoryId": "Worm lizards"
     }
   ],
   "comments": [
