@@ -103,7 +103,7 @@
     },
     {
       "name": "Zarudny's worm lizard",
-      "description": "A worm lizard from the Arabian peninsula with a love for sandy enviroments.",
+      "description": "A worm lizard from the Arabian peninsula with a love for sandy environments.",
       "price": 399,
       "categoryId": "Worm lizards"
     },
@@ -169,6 +169,58 @@
     {
       "comment": "One of the sweetest frogs, they love to just hang around <3",
       "userId": 3,
+      "productId": "Australian green tree frog"
+    }
+  ],
+  "commentsFromUsers": [
+    {
+      "comment": "Worm lizard WITH arms?",
+      "userId": 4,
+      "productId": "Bipes"
+    },
+    {
+      "comment": "I thought it would be a nice turtle. Now I have one finger less..",
+      "userId": 4,
+      "productId": "South American snapping turtle"
+    },
+    {
+      "comment": "Suwannee cooter is much nicer than the snapping turtle.",
+      "userId": 4,
+      "productId": "Suwannee cooter"
+    },
+    {
+      "comment": "What a colourful belly.",
+      "userId": 4,
+      "productId": "Fire bellied toad"
+    },
+    {
+      "comment": "It looks so weird.",
+      "userId": 4,
+      "productId": "Red worm lizard"
+    },
+    {
+      "comment": "I mistook it as a leaf.",
+      "userId": 4,
+      "productId": "Common surinam toad"
+    },
+    {
+      "comment": "I knew it was giant when I bought it but oh my it has grown.",
+      "userId": 4,
+      "productId": "Chinese giant salamander"
+    },
+    {
+      "comment": "I lost something once patrick.",
+      "userId": 4,
+      "productId": "Axolotl"
+    },
+    {
+      "comment": "The best time to wear a striped sweater is all the time.",
+      "userId": 4,
+      "productId": "Smooth-sided toad"
+    },
+    {
+      "comment": "Music is my hustle.",
+      "userId": 4,
       "productId": "Australian green tree frog"
     }
   ]
