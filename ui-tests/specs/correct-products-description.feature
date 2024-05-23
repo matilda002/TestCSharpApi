@@ -7,7 +7,7 @@ Feature: As a user, I want all products to be presented regardless of whether th
 
     Examples:
       | category      | productName                    | description                                                                                                                                            |
-      | Alla          | Amazon milk frog               | The amazon milk frog is a bigger species (around 10cm in length) with stripes and blue blood!!                                                         |
+      | Alla          | Amazon milk frog               | The amazon milk frog is a bigger species (around 10 cm in length) with stripes and blue blood!!                                                         |
       | Alla          | Common spadefoot toad          | The common spadefoot toad also known as the garlic toad is a type of frog, not toad.                                                                   |
       | Alla          | Axolotl                        | The famous axolotl, a specie with the ability to regrow its body parts :o                                                                              |
       | Alla          | Poison dart frog               | Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters. |
@@ -23,7 +23,7 @@ Feature: As a user, I want all products to be presented regardless of whether th
       | Alla          | Zarudny's worm lizard          | A worm lizard from the Arabian peninsula with a love for sandy environments.                                                                           |
       | Alla          | Red worm lizard                | One of the bigger specie of worm lizards reaching lengths of 80 cm.                                                                                    |
       | Alla          | Bipes                          | Bipes or Mexican worm lizard has small forearms with five toes.                                                                                        |
-      | Frogs         | Amazon milk frog               | The amazon milk frog is a bigger species (around 10cm in length) with stripes and blue blood!!                                                         |
+      | Frogs         | Amazon milk frog               | The amazon milk frog is a bigger species (around 10 cm in length) with stripes and blue blood!!                                                         |
       | Frogs         | Common spadefoot toad          | The common spadefoot toad also known as the garlic toad is a type of frog, not toad.                                                                   |
       | Salamanders   | Axolotl                        | The famous axolotl, a specie with the ability to regrow its body parts :o                                                                             |
       | Frogs         | Poison dart frog               | Don't let the poison in the poison dart frog's name fool you! It's perfectly safe to handle in captivity as long as you don't feed the wrong critters. |

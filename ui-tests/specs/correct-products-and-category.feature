@@ -16,7 +16,7 @@ Feature: As a user, I want all products to be presented regardless of whether th
       | Alla          | Common surinam toad            |
       | Alla          | Smooth-sided toad              |
       | Alla          | Olm                            |
-      | Alla          | Fire bellied toad               |
+      | Alla          | Fire bellied toad              |
       | Alla          | Suwannee cooter                |
       | Alla          | Indian flapshell turtle        |
       | Alla          | South American snapping turtle |
@@ -32,7 +32,7 @@ Feature: As a user, I want all products to be presented regardless of whether th
       | Toads         | Common surinam toad            |
       | Toads         | Smooth-sided toad              |
       | Salamanders   | Olm                            |
-      | Toads         | Fire bellied toad               |
+      | Toads         | Fire bellied toad              |
       | Turtles       | Suwannee cooter                |
       | Turtles       | Indian flapshell turtle        |
       | Turtles       | South American snapping turtle |
